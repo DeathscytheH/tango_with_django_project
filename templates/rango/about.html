@@ -6,6 +6,16 @@
   <title>About</title>
 </head>
 <body>
+  <h1> Rango says...</h1>
+  <div>
+      Hey there partner! <br>
+      <strong>{{ boldmessage }}</strong>
+  </div>
+  <div>
+      <img src="{% static 'images/dunecat.jpg' %}" alt="Dunecat">
+      <a href="/rango/">Home!</a><br>
+      <img src="{{ MEDIA_URL }}catwow.jpg" alt="Catwow"><!-- Nueva linea -->
+  </div>
 
 </body>
 </html>
