@@ -1,9 +1,16 @@
 <!DOCTYPE html>
+
+{% load staticfiles %} <!-- Nueva linea -->
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Rango</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- JS -->
+    <script src="{% static 'js/jquery.js' %}"></script>
 </head>
 
 <body>
@@ -14,6 +21,7 @@
     </div>
     <div>
         <a href="/rango/about">About!</a><br>
+        <img src="{% static 'images/dunecat.jpg' %}" alt="Dunecat"><!-- Nueva linea -->
     </div>
 </body>
 
