@@ -9,6 +9,10 @@ class Category(models.Model):
     """
     name = models.CharField(max_length=128, unique=True)
 
+    class Meta:
+        """docstring for Meta."""
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.name
 
@@ -18,6 +22,9 @@ class Page(models.Model):
     Page model for db
     """
     category = models.ForeignKey(Category)
-    title = models.CharField(mac_length=128)
+    title = models.CharField(max_length=128)
     url = models.URLField()
     views = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
