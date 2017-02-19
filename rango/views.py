@@ -23,7 +23,12 @@ def show_category(request, category_name_slug):
         pages = Page.objects.filter(category=category)
 
         # Adds our results list to the template context under name pages.
-        context_dict['category'] = pages
+        context_dict['pages'] = pages
+
+        # We also add the category object from the database to the context
+        # dictionary. We'll use this in the template to verify that the
+        # category exist
+        context_dict['category'] = category
     except Category.DoesNotExist:
         # We get here if we didn't find the specified category.
         # Don't do anything, the template will display "no category" message
