@@ -43,8 +43,22 @@ def index(request):
     # or all if less than 5. Place the list in our context_dict that will be
     # passed to the template engine.
 
-    category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {'categories': category_list}
+    # Empty diccionary
+    context_dict = {}
+
+    try:
+        # Recuperar el top 5 de categorias por likes
+        category_list = Category.objects.order_by('-likes')[:5]
+
+        # Recuperar el top 5 de las paginas más vistas
+        page_list = Page.objects.order_by('-views')[:5]
+
+        # Agregarlo al diccionario ambas listas
+        context_dict['categories'] = category_list
+        context_dict['pages'] = page_list
+    except (Category.DoesNotExist, Page.DoesNotExist):
+        context_dict['categories'] = None
+        context_dict['pages'] = None
 
     # Render the response and send it back.
     return render(request, 'rango/index.html', context=context_dict)
