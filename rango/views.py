@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
 
+# Import the forms
+from rango.forms import CategoryForm
+
 
 # Create your views here.
 
@@ -68,3 +71,25 @@ def about(request):
     context_dict = {'boldmessage': "Alejandro H. Pineda"}
 
     return render(request, 'rango/about.html', context=context_dict)
+
+
+def add_category(request):
+    form = CategoryForm()
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            cat = form.save(commit=True)
+            print(cat, cat.slug)
+            # Now that the category is saved we could give a confirmation
+            # message but since the most recent category added is on the index
+            # page.
+            return index(request)
+        else:
+            # The supplied form contained errors - just print them to the cmd.
+            print(form.errors)
+    # Will handle the bad form, new form, or no form suppied cases. Render the
+    # form with error messages (if any).
+    return render(request, 'rango/add_category.html', {'form': form})
