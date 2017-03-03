@@ -33,7 +33,7 @@ SECRET_KEY = '*d&f93pm&o9e=n38r0=ah*w)0i%^zh2knu0wcns4bmqfjiod+^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.0.22']
 
 
 # Application definition
@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rango',
+        'USER': 'pi',
+        'PASSWORD': 'raspberry',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
