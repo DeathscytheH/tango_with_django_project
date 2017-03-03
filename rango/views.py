@@ -7,6 +7,7 @@ from rango.models import Page
 
 # Import the forms
 from rango.forms import CategoryForm
+from rango.forms import PageForm
 
 
 # Create your views here.
@@ -93,3 +94,29 @@ def add_category(request):
     # Will handle the bad form, new form, or no form suppied cases. Render the
     # form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})
+
+def add_page(request, category_name_slug):
+    # Preguntamos si existe la categoria o la dejamos vacia
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+    except Category.DoesNotExist:
+        category = None
+    
+    # Creamos una forma vacia
+    form = PageForm()
+    # Si es un post
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+        # Si es una forma valida continuamos
+        if form.is_valid():
+            # Si existe la categoria
+            if category:
+                page = form.save(commit=False)
+                page.category = category
+                page.views = 0
+                page.save()
+                return show_category(request, category_name_slug)
+        else:
+            print(form.errors)
+    context_dict = {'form': form, 'category': category}
+    return render(request, 'rango/add_page.html', context_dict)
