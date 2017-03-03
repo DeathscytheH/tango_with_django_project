@@ -13,7 +13,7 @@ def populate():
     # to add into each category.
     # Then we will create a dictionary of dictionaries for our Categories. This
     # might seem a little bit confusing, but it allows us to iterate through
-    # each data structure, and add the data to our models.
+    # each data structure, and add the data to our models. TEST.
 
     python_pages = [
         {"title": "Official Python Tutorial",
