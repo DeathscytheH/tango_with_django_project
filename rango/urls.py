@@ -6,6 +6,8 @@
 from django.conf.urls import url
 from rango import views
 
+# Creamos un app_name para rango
+app_name = 'rango'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about/', views.about, name='about'),
