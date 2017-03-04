@@ -33,7 +33,7 @@ SECRET_KEY = '*d&f93pm&o9e=n38r0=ah*w)0i%^zh2knu0wcns4bmqfjiod+^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rango.dev', 'localhost', '127.0.0.1', '.rango.dev']
+ALLOWED_HOSTS = ['rango.dev', 'localhost', '127.0.0.1', '.rango.dev', '192.168.1.72', '192.168.0.2']
 # ALLOWED_HOSTS = ['*']
 
 # Application definition
