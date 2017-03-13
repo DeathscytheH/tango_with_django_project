@@ -3,6 +3,15 @@
 
 {% block body_block %}
     <div>
+        <h1>
+        {% if user.is_authenticated %}
+            Howdy {{ user.username }}!
+        {% else %}
+            Hey there partner!
+        {% endif %}
+        </h1>
+    </div>
+    <div>
     {% if categories %}
         <h2>Most Liked Categories</h2>
         <ul>
