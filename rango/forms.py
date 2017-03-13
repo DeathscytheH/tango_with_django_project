@@ -61,4 +61,4 @@ class UserProfileForm(forms.ModelForm):
     
     class Meta:
         model = UserProfile
-        fiels = ('website', 'picture')
+        fields = ('website', 'picture')
