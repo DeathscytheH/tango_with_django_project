@@ -50,6 +50,9 @@ def index(request):
     # categories by # of likes in descending order. Retrieve the top 5 only -
     # or all if less than 5. Place the list in our context_dict that will be
     # passed to the template engine.
+    
+    # Test cookie
+    request.session.set_test_cookie()
 
     # Empty diccionary
     context_dict = {}
@@ -73,6 +76,11 @@ def index(request):
 
 
 def about(request):
+    # Test de cookies
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+    
     context_dict = {'boldmessage': "Alejandro H. Pineda"}
 
     return render(request, 'rango/about.html', context=context_dict)
@@ -245,3 +253,6 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('index'))
+
+
+# Helper function
