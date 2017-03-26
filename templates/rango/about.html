@@ -9,13 +9,16 @@
   <h1> Rango says...</h1>
   <div>
     {% if user.is_authenticated %}
-        Howdy {{ user.username }}!
+        Howdy {{ user.username }}! <br>
     {% else %}
-        Hey there partner!
+        Hey there partner! <br>
     {% endif %}
       This tutorial has been put together by <br>
       <strong>{{ boldmessage }}</strong>
   </div>
+  <div>
+    <p>Visits: {{ visits }}</p>
+  </div>      
   <div>
       <img src="{% static 'images/rango.jpg' %}" alt="Dunecat">
       <br>

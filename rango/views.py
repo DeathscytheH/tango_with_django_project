@@ -73,6 +73,9 @@ def index(request):
     # Call the helper function to handle the cookies
     visitor_cookie_handler(request)
     
+    # Pass the number of visits
+    context_dict['visits'] = request.session['visits']
+    
     # Response object
     response = render(request, 'rango/index.html', context=context_dict)
     
@@ -82,14 +85,18 @@ def index(request):
 
 
 def about(request):
-    # Test de cookies
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-        request.session.delete_test_cookie()
+    # Call the helper function to handle the cookies
+    visitor_cookie_handler(request)
     
     context_dict = {'boldmessage': "Alejandro H. Pineda"}
+    
+    # Pass the number of visits
+    context_dict['visits'] = request.session['visits']    
+    
+    # Response object
+    response = render(request, 'rango/about.html', context=context_dict)    
 
-    return render(request, 'rango/about.html', context=context_dict)
+    return response
 
 
 @login_required
