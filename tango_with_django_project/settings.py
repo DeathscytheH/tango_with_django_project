@@ -151,3 +151,9 @@ PASSWORD_HASHERS = (
 
 # Login redirect
 LOGIN_URL = '/rango/login/'
+
+# Persistent session for one day
+SESSION_COOKIE_AGE = 86400
+
+# Browser length session deactivated by default
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
