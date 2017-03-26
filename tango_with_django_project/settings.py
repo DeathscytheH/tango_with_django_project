@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,17 @@ SESSION_COOKIE_AGE = 86400
 
 # Browser length session deactivated by default
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+# User Authentication with Django-Registration-Redux
+
+# If True, users can register
+REGISTRATION_OPEN = True
+# One-week activation window; can be changed
+ACCOUNT_ACTIVATION_DAYS = 7
+# If True, the user will be automatically logged in
+REGISTRATION_AUTO_LOGIN = True
+# The page you want users to arrive at after they successfully log in
+LOGIN_REDIRECT_URL = '/rango/'
+# The page users are directed to if they are not logged in,
+# and are trying to access pages requiring authentication
+LOGIN_URL = '/accounts/login/'
